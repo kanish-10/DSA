@@ -1,0 +1,187 @@
+Data Types  :-
+
+    1) int  :- Range (-2,147,483,648 to 2,147,483,647)
+               Bytes (4 bytes)
+
+    2) long :- Range (-2,147,483,648 to 2,147,483,647)
+               Bytes (4 bytes)
+
+    3) unsigned short :- Range (0 to 65,535)
+                         Bytes (2 bytes)
+
+    4) unsigned long :- Range (0 to 4,294,967,295)
+                        Bytes (4 bytes)
+
+    5) long long :- Range (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
+                    Bytes (8 bytes)
+
+    6) float :- Range (1.2E-38 to 3.4E+38)
+                Bytes (4 bytes)
+
+    7) double :- Range (2.3E-308 to 1.7E+308)
+                 Bytes (8 bytes)
+
+    8) long double :- Range (3.4E-4932 to 1.1E+4932)
+                      Bytes (10 bytes)
+
+    9) string :- Input technique use [getline(cin, str);]
+
+    10) char :- Single character
+
+    11) void :- empty
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+If-Else Statement :-
+
+    NOTE :- EXECUTION is only done when condition is true
+
+    if(condition) {
+        EXECUTION
+    } else if(condition) {
+        EXECUTION
+        if(condition) {
+            EXECUTION
+        } else {
+            EXECUTION
+        }
+    } else {
+        EXECUTION
+    }
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Switch Statement :-
+
+    NOTE :- EXECUTION is only done when condition is true
+
+    switch(data) {
+        case condition:
+            EXECUTION
+            break;
+        case condition:
+            EXECUTION
+            break;
+        case condition:
+            EXECUTION
+            break;
+        default:
+            EXECUTION
+            break;
+    }
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Arrays :- Similar data type stored together. Array starts from '0' / "Zeroth" index.
+
+    data_type variable_name[size_of_array];
+    eg :- int arr[5];
+
+    OR
+
+    data_type variable_name[] = {data, data, data, data, data, data};
+    eg :- char arr[] = {'k', 'a', 'n', 'i', 's', 'h'};
+
+    NOTE :- String is array of char
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+For Loop :-
+
+    NOTE :- EXECUTION works until condition is satisfying
+
+    for(initialization, condition, increment/decrement) {
+        EXECUTION
+    }
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+While loop :-
+
+    NOTE :- EXECUTION works until condition is satisfying
+
+    while(condition) {
+        EXECUTION
+    }
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Do-While loop :-
+
+    NOTE :- EXECUTION works at least one time whether the condition is true or false.
+            After first EXECUTION it checks for condition.
+
+    do {
+        EXECUTION
+    } while(condition);
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Functions :-
+
+    NOTE :- When parameters are send they are copied.
+            If you want to send real variables send reference of it by adding '&' sign before parameter
+
+    data_type function_name(parameters/arguments) {
+        EXECUTION
+    }
+
+    Eg :-
+
+    Normal Function :-
+        int add(int a, int b) {
+                return a+b;
+        }
+
+    Reference Function :-
+        int add(int &a, int &b) {
+                return a+b;
+        }
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Time Complexity :-
+    Time Complexity is not time taken by the code while running.
+    Different Machines take Different Time to run same code.
+
+    So what is time complexity if not actual time?
+    - The time complexity of an algorithm quantifies the amount of time taken by an algorithm
+      to run as a function of the length of the input.
+
+    3 Rules :-
+        1) Compute Time complexity for the worst case scenario.
+        2) Avoid Constants.
+        3) Avoid Lower Values.
+
+    Three cases of Time Complexity :-
+        1) Best Case
+        2) Worst Case
+        3) Average Case
+
+    Big-Oh :-
+        Notation for showing time complexity.
+        O(time)
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Space Complexity :-
+
+    Memory space taken by code.
+
+    It is Noted with Big-Oh.
+
+    Auxiliary Space + Input Space
+
+    Auxiliary Space is the space that you take to solve the problem.
+    Input Space is the space you take to store the input.
+
+    eg :-
+
+    int a;
+    int b;
+    cin >> a >> b;
+    int c = a + b;
+
+    Here c is Auxiliary Space and a,b are Input Space.
+
+-----------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+Methods :-
+    1) Division Method
+    2) Folding Method
+    3) Mid Square Method
+
+Collision is problem
