@@ -57,9 +57,11 @@ Node *arrayToBTLevelOrder(vector<int> arr) {
         t->left = left;
         q.push(left);
 
-        Node *right = new Node(arr[2 * i + 2]);
-        t->right = right;
-        q.push(right);
+        if ((2 * i + 2) != arr.size()) {
+            Node *right = new Node(arr[2 * i + 2]);
+            t->right = right;
+            q.push(right);
+        }
         i++;
     }
     return root;
@@ -194,6 +196,14 @@ void preInPostTraversal(Node *root) {
         cout << i << " ";
     }
     cout << endl;
+}
+
+Node *arrayToBT(vector<int> arr, int index = 0) {
+    if (index >= arr.size() || (arr[index] == -1)) return nullptr;
+    Node *root = new Node(arr[index]);
+    root->left = arrayToBT(arr, 2 * index + 1);
+    root->right = arrayToBT(arr, 2 * index + 2);
+    return root;
 }
 
 #endif //INC_13_BINARYTREE_NODE_H

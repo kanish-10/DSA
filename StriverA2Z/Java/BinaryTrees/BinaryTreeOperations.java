@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class BinaryTreeOperations {
     public static void main(String[] args) {
-        Node root = arrayToBTLevelOrder(new int[]{1, 2, 3, 4, 5, 6, 7});
+        Node root = arrayToBTLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7});
 
         preorderTraversal(root);
         System.out.println();
@@ -55,24 +55,27 @@ public class BinaryTreeOperations {
         System.out.print(node.data + " ");
     }
 
-    public static Node arrayToBTLevelOrder(int[] arr) {
-        if (arr.length == 0) return null;
-        Queue<Node> q = new LinkedList<>();
+    public static Node arrayToBTLevelOrder(Integer[] arr) {
+        if (arr.length == 0 || arr[0] == null) return null;
+
         Node root = new Node(arr[0]);
         int i = 0;
-        q.offer(root);
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
         while (!q.isEmpty() && i < (arr.length / 2)) {
-            Node t = q.peek();
-            q.poll();
+            Node t = q.poll();
 
             Node left = new Node(arr[2 * i + 1]);
             t.left = left;
             q.offer(left);
 
-            Node right = new Node(arr[2 * i + 2]);
-            t.right = right;
-            q.offer(right);
-
+            if ((2 * i + 2) != arr.length) {
+                Node right = new Node(arr[2 * i + 2]);
+                t.right = right;
+                q.offer(right);
+            }
             i++;
         }
         return root;
@@ -204,5 +207,13 @@ public class BinaryTreeOperations {
             System.out.print(i + " ");
         }
         System.out.println();
+    }
+
+    public static Node arrayToBT(Integer[] arr, int index) {
+        if (index >= arr.length || (arr[index] == -1)) return null;
+        Node root = new Node(arr[index]);
+        root.left = arrayToBT(arr, 2 * index + 1);
+        root.right = arrayToBT(arr, 2 * index + 2);
+        return root;
     }
 }

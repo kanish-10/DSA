@@ -44,9 +44,11 @@ export function arrayToBTLevelOrder(arr: any[]) {
 		node.left = left;
 		q.push(left);
 
-		let right = new BTNode(arr[(2 * i) + 2]);
-		node.right = right;
-		q.push(right);
+		if ((2*i+2) !== arr.length) {
+			let right = new BTNode(arr[(2 * i) + 2]);
+			node.right = right;
+			q.push(right);
+		}
 		i++;
 	}
 	return root;
@@ -166,6 +168,22 @@ export function preInPostTraversal(root: BTNode) {
 	console.log(post)
 }
 
+export function arrayToBT(arr: any[], index = 0) {
+	// Base case: If the current index is out of bounds or the element is null, return null
+	if (index >= arr.length || arr[index] === null) {
+		return null;
+	}
+
+	// Create a new TreeNode with the current element
+	const root = new BTNode(arr[index]);
+
+	// Recursively build the left and right subtrees
+	root.left = arrayToBT(arr, 2 * index + 1);
+	root.right = arrayToBT(arr, 2 * index + 2);
+
+	return root;
+}
+
 let root = arrayToBTLevelOrder([1, 2, 3, 4, 5, 6, 7]);
 
 // preorderTraversal(root);
@@ -184,4 +202,4 @@ let root = arrayToBTLevelOrder([1, 2, 3, 4, 5, 6, 7]);
 // console.log();
 // postorderTraversalIterative1Stack(root);
 
-preInPostTraversal(root);
+// preInPostTraversal(root);

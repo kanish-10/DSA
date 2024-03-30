@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.preInPostTraversal = exports.postorderTraversalIterative1Stack = exports.postorderTraversalIterative2Stack = exports.inorderTraversalIterative = exports.preorderTraversalIterative = exports.levelOrder = exports.arrayToBTLevelOrder = exports.postorderTraversal = exports.inorderTraversal = exports.preorderTraversal = exports.BTNode = void 0;
+exports.arrayToBT = exports.preInPostTraversal = exports.postorderTraversalIterative1Stack = exports.postorderTraversalIterative2Stack = exports.inorderTraversalIterative = exports.preorderTraversalIterative = exports.levelOrder = exports.arrayToBTLevelOrder = exports.postorderTraversal = exports.inorderTraversal = exports.preorderTraversal = exports.BTNode = void 0;
 class BTNode {
     data;
     left;
@@ -49,9 +49,11 @@ function arrayToBTLevelOrder(arr) {
         let left = new BTNode(arr[(2 * i) + 1]);
         node.left = left;
         q.push(left);
-        let right = new BTNode(arr[(2 * i) + 2]);
-        node.right = right;
-        q.push(right);
+        if ((2 * i + 2) !== arr.length) {
+            let right = new BTNode(arr[(2 * i) + 2]);
+            node.right = right;
+            q.push(right);
+        }
         i++;
     }
     return root;
@@ -192,6 +194,19 @@ function preInPostTraversal(root) {
     console.log(post);
 }
 exports.preInPostTraversal = preInPostTraversal;
+function arrayToBT(arr, index = 0) {
+    // Base case: If the current index is out of bounds or the element is null, return null
+    if (index >= arr.length || arr[index] === null) {
+        return null;
+    }
+    // Create a new TreeNode with the current element
+    const root = new BTNode(arr[index]);
+    // Recursively build the left and right subtrees
+    root.left = arrayToBT(arr, 2 * index + 1);
+    root.right = arrayToBT(arr, 2 * index + 2);
+    return root;
+}
+exports.arrayToBT = arrayToBT;
 let root = arrayToBTLevelOrder([1, 2, 3, 4, 5, 6, 7]);
 // preorderTraversal(root);
 // console.log();
@@ -208,4 +223,4 @@ let root = arrayToBTLevelOrder([1, 2, 3, 4, 5, 6, 7]);
 // postorderTraversalIterative2Stack(root);
 // console.log();
 // postorderTraversalIterative1Stack(root);
-preInPostTraversal(root);
+// preInPostTraversal(root);

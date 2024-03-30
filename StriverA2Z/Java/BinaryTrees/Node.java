@@ -18,3 +18,16 @@ class Pair {
         this.node = node;
     }
 }
+
+class Tuple {
+    Node node;
+    int vertical;
+    int level;
+
+    Tuple(Node node, int vertical, int level) {
+        this.node = node;
+        this.vertical = vertical;
+        this.level = level;
+    }
+}
+
